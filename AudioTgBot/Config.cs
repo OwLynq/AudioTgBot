@@ -16,7 +16,6 @@ public static class Config
         LoadConfig();
     }
 
-    // Метод для загрузки данных из config.json
     private static void LoadConfig()
     {
         try
@@ -28,31 +27,30 @@ public static class Config
 
                 if (configData != null)
                 {
-                    Token = configData?.Token ?? throw new InvalidOperationException("Токен не найден в конфиге!");
-                    SoundFolderPath = configData?.SoundFolderPath ?? throw new InvalidOperationException("Путь к папке звуков не найден в конфиге!");
+                    Token = configData?.Token ?? throw new InvalidOperationException("Token not found in the config!");
+                    SoundFolderPath = configData?.SoundFolderPath ?? throw new InvalidOperationException("Sound folder path not found in the config!");
                     AllowedUsers = configData?.AllowedUsers ?? new List<long>();
 
-                    Console.WriteLine("[Config] Конфигурация успешно загружена.");
+                    Console.WriteLine("[Config] Configuration successfully loaded.");
                 }
                 else
                 {
-                    throw new InvalidOperationException("Ошибка при десериализации конфигурации.");
+                    throw new InvalidOperationException("Error during configuration deserialization.");
                 }
             }
             else
             {
-                throw new FileNotFoundException("Конфигурационный файл config.json не найден.");
+                throw new FileNotFoundException("Configuration file config.json not found.");
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"[Config] Ошибка при загрузке конфигурации: {ex.Message}");
+            Console.WriteLine($"[Config] Error loading configuration: {ex.Message}");
             throw;
         }
     }
 }
 
-// Класс для десериализации конфигурации
 public class AppConfig
 {
     public string? Token { get; set; }

@@ -6,7 +6,7 @@ namespace AudioTgBot.Handlers
     {
         public static Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {
-            Console.WriteLine($"Ошибка у Бота: {exception.Message}");
+            Console.WriteLine($"The bot encountered an exception: {exception.Message}");
             return Task.CompletedTask;
         }
     }

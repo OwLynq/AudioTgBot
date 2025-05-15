@@ -18,7 +18,7 @@ namespace AudioTgBot.Handlers
 
                 if (update.Message is { } message && message.Text is { } messageText) 
                 {
-                    Console.WriteLine($"Бот получил сообщение в чате {chatId}: {messageText}");
+                    Console.WriteLine($"The bot received a message in the chat: {chatId}: {messageText}");
 
                     var (responseText, buttons) = CommandProcessor.ProcessCommand(messageText, userId); 
 
@@ -34,10 +34,10 @@ namespace AudioTgBot.Handlers
                 else if (update.CallbackQuery is { } callbackQuery)
                 {
                     string action = callbackQuery.Data ?? string.Empty;
-                    Console.WriteLine($"Пользователь {userId} нажал кнопку: {action}");
+                    Console.WriteLine($"User {userId} pressed the button: {action}");
                     if (!Config.AllowedUsers.Contains(userId))
                     {
-                        await botClient.AnswerCallbackQuery(callbackQuery.Id, "Приятель, ты как сюда попал!?");
+                        await botClient.AnswerCallbackQuery(callbackQuery.Id, "Buddy, how did you get here!?");
                         return;
                     }
 
@@ -56,7 +56,7 @@ namespace AudioTgBot.Handlers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка обработки апдейта: {ex.Message}");
+                Console.WriteLine($"Update processing error: {ex.Message}");
             }
         }
     }

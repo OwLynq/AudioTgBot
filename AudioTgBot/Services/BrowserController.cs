@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using WindowsInput;
 
-public static class BrowserController // Не используется, оставлен для теста на будущее/временный
+public static class BrowserController // Not in use, left for future testing/temporary
 {
     private static readonly InputSimulator _simulator = new InputSimulator();
 
@@ -11,7 +11,7 @@ public static class BrowserController // Не используется, оста
     {
         if (_windowOpened)
         {
-            Console.WriteLine("Окно Chrome уже открыто. Закрываем его с помощью Alt + F4.");
+            Console.WriteLine("The Chrome window is already open. Close it with Alt + F4.");
             CloseWindow();
         }
 
@@ -23,15 +23,15 @@ public static class BrowserController // Не используется, оста
         });
 
         _windowOpened = true;
-        Console.WriteLine("Окно Chrome открыто с URL: " + url);
+        Console.WriteLine("The Chrome window is open with the URL: " + url);
         Thread.Sleep(5000); 
         _simulator.Keyboard.KeyPress(VirtualKeyCode.RETURN);
     }
 
     public static void CloseWindow()
     {
-        Console.WriteLine("Попытка закрыть окно с помощью Alt + F4...");
+        Console.WriteLine("Attempt to close the window using Alt + F4...");
         _simulator.Keyboard.ModifiedKeyStroke(VirtualKeyCode.MENU, VirtualKeyCode.F4);
-        Console.WriteLine("Команда Alt + F4 отправлена.");
+        Console.WriteLine("Alt + F4 command has been sent.");
     }
 }

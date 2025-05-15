@@ -50,7 +50,7 @@ namespace AudioTgBot.Services
 
             if (fileName == null)
             {
-                Console.WriteLine($"Неизвестный звук: {soundName}");
+                Console.WriteLine($"Unknown sound: {soundName}");
                 return;
             }
 
@@ -58,7 +58,7 @@ namespace AudioTgBot.Services
 
             if (!File.Exists(soundPath))
             {
-                Console.WriteLine($"Файл не найден: {soundPath}");
+                Console.WriteLine($"File not found: {soundPath}");
                 return;
             }
             await PlaySoundAsync(soundPath);
@@ -81,7 +81,7 @@ namespace AudioTgBot.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка воспроизведения звука: {ex.Message}");
+                Console.WriteLine($"Error playing sound: {ex.Message}");
             }
         }
     }

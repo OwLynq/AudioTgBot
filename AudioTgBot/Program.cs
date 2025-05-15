@@ -8,11 +8,11 @@ namespace AudioTgBot
     class Program
     {
 
-        private static readonly TelegramBotClient BotClient = new(Config.Token ?? throw new InvalidOperationException("Токен не был найден в конфигурации.")); 
+        private static readonly TelegramBotClient BotClient = new(Config.Token ?? throw new InvalidOperationException("The token was not found in the configuration.")); 
 
         static async Task Main()
         {
-            Console.WriteLine("Бот запускается...");
+            Console.WriteLine("The bot is starting...");
 
             using var cts = new CancellationTokenSource();
             var receiverOptions = new ReceiverOptions // (Polling)
@@ -23,7 +23,7 @@ namespace AudioTgBot
 
             BotClient.StartReceiving(UpdateHandler.HandleUpdateAsync, ErrorHandler.HandleErrorAsync, receiverOptions, cts.Token);
 
-            Console.WriteLine("Бот запущен...");
+            Console.WriteLine("The bot is running...");
             await Task.Delay(-1);
         }
     }

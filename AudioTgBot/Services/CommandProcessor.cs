@@ -6,10 +6,10 @@ namespace AudioTgBot.Services
     {
         public static (string, InlineKeyboardMarkup?) ProcessCommand(string messageText, long userId)
         {
-            if (messageText.StartsWith("/echo")) 
+            if (messageText.StartsWith("/echo"))
             {
-                string echoText = messageText.Substring(5).Trim(); 
-                return (string.IsNullOrEmpty(echoText) ? "Пользователь добавь текст после /echo!" : echoText, null);
+                string echoText = messageText.Substring(5).Trim();
+                return (string.IsNullOrEmpty(echoText) ? "Buddy, add your text after /echo!" : echoText, null);
             }
 
             if (messageText == "/music")
@@ -17,11 +17,11 @@ namespace AudioTgBot.Services
                 if (Config.AllowedUsers.Contains(userId))
                 {
                     var buttons = GetMusicControlButtons();
-                    return ("Отправляю тебе кнопки Пользователь.", buttons);
+                    return ("Sending you music control buttons.", buttons);
                 }
                 else
                 {
-                    return ("Пользователь, у тебя нет доступа к управлению Музыкой.", null);
+                    return ("You do not have access to control the music.", null);
                 }
             }
 
@@ -30,61 +30,63 @@ namespace AudioTgBot.Services
                 if (Config.AllowedUsers.Contains(userId))
                 {
                     var buttons = GetSoundButtons();
-                    return ("Отправляю саундбар.", buttons);
+                    return ("Sending you the soundboard.", buttons);
                 }
                 else
                 {
-                    return ("Пользователь, у тебя нет доступа к управлению Саундбаром!", null);
+                    return ("You do not have access to control the soundboard!", null);
                 }
             }
 
             return messageText switch
             {
-                "/start" => ("Жду команды.", null),
-                "/help" => ("В данный момент могу отвечать на команды:\n" +
-                            "/start – первичная активация\n" +
-                            "/echo [текст] – Бот повторяет за тобой\n" +
-                            "/help – ну, ты уже тут… поздравляю.\n" +
-                            "/music – управление Музыкой\n" +
-                            "/sound – управление Саунд-баром", null),
-                _ => ("Пользователь, я не понимаю этой команды. Попробуй ввести /help, чтобы проверить доступные команды.", null)
+                "/start" => ("Waiting for a command.", null),
+                "/help" => ("Currently, I can respond to the following commands:\n" +
+                            "/start – initial activation\n" +
+                            "/echo [text] – the bot repeats your text\n" +
+                            "/help – well, you’re already here... congratulations.\n" +
+                            "/music – music control\n" +
+                            "/sound – soundboard control", null),
+                _ => ("I don’t understand this command. Try entering /help to check available commands.", null)
             };
         }
+
         public static InlineKeyboardMarkup GetMusicControlButtons()
         {
             return new InlineKeyboardMarkup(new[]
             {
-                // Первая строка с тремя кнопками
+                // First row with three buttons
                 new InlineKeyboardButton[]
                 {
-                InlineKeyboardButton.WithCallbackData("⏮", "previous"),
-                InlineKeyboardButton.WithCallbackData("⏯", "playpause"),
-                InlineKeyboardButton.WithCallbackData("⏭", "next")
+                    InlineKeyboardButton.WithCallbackData("⏮", "previous"),
+                    InlineKeyboardButton.WithCallbackData("⏯", "playpause"),
+                    InlineKeyboardButton.WithCallbackData("⏭", "next")
                 },
-                // Каждая из следующих кнопок на новой строке (cейчас не работает)
-                [InlineKeyboardButton.WithCallbackData("Плейлист 1 (в разработке)", "playlist1")],
-                [InlineKeyboardButton.WithCallbackData("Плейлист 2 (в разработке)", "playlist2")],
-                [InlineKeyboardButton.WithCallbackData("Плейлист 3 (в разработке)", "playlist3")],
-                [InlineKeyboardButton.WithCallbackData("Плейлист 4 (в разработке)", "playlist4")],
-                [InlineKeyboardButton.WithCallbackData("Плейлист 5 (в разработке)", "playlist5")]
+                // Each following button on a new line (currently not working)
+                [InlineKeyboardButton.WithCallbackData("Playlist 1 (in development)", "playlist1")],
+                [InlineKeyboardButton.WithCallbackData("Playlist 2 (in development)", "playlist2")],
+                [InlineKeyboardButton.WithCallbackData("Playlist 3 (in development)", "playlist3")],
+                [InlineKeyboardButton.WithCallbackData("Playlist 4 (in development)", "playlist4")],
+                [InlineKeyboardButton.WithCallbackData("Playlist 5 (in development)", "playlist5")]
             });
         }
+
         public static InlineKeyboardMarkup GetSoundButtons()
         {
             return new InlineKeyboardMarkup(
             [
-                    [
-                       InlineKeyboardButton.WithCallbackData("Сирена", "sound_siren"),
-                       InlineKeyboardButton.WithCallbackData("Крик", "sound_scream")
-                    ],
-                    [
-                       InlineKeyboardButton.WithCallbackData("Загрузка", "sound_load"),
-                       InlineKeyboardButton.WithCallbackData("Взрыв", "sound_boom")
-                    ],
-                    [
-                       InlineKeyboardButton.WithCallbackData("Собака", "sound_dog"),
-                       InlineKeyboardButton.WithCallbackData("Кот", "sound_сat")
-                    ]
+                [
+                   InlineKeyboardButton.WithCallbackData("Siren", "sound_siren"),
+                   InlineKeyboardButton.WithCallbackData("Scream", "sound_scream")
+                ],
+                [
+                   InlineKeyboardButton.WithCallbackData("Loading", "sound_load"),
+                   InlineKeyboardButton.WithCallbackData("Explosion", "sound_boom")
+                ],
+                [
+                   InlineKeyboardButton.WithCallbackData("Dog", "sound_dog"),
+                   InlineKeyboardButton.WithCallbackData("Cat", "sound_cat")
+                ]
             ]);
         }
     }
