@@ -1,31 +1,38 @@
-# AudioTgBot — Музыкальный Telegram-бот
+# AudioTgBot — A Simple Telegram Bot to Control Local Music Playback on Your PC
 
-## Описание
-AudioTgBot — это Telegram-бот для управления музыкальными воспроизведениями. Он предоставляет пользователю возможность воспроизводить музыку на ПК, переключать треки, запускать аудио файлы из папки.
+## Description
+AudioTgBot is a Telegram bot for managing music playback. It allows the user to play music on a PC, switch tracks, and launch audio files from a folder.
 
-## Особенности
-- **Переключение музыки**: Возможность переключать треки с помощью кнопок.
-- **Воспроизведение файлов**: Бот поддерживает воспроизведение локальных музыкальных файлов.
-- **Простой интерфейс**: Легкое управление с помощью кнопок в Telegram.
+## 🎵 Features
 
-## Технологии
-- **C# / .NET** — для разработки бота и логики взаимодействия.
-- **Telegram Bot API** — для создания бота и взаимодействия с пользователями.
+- **Track Switching** – Switch between tracks using inline buttons.
+- **File Playback** – Play local audio files stored on your PC.
+- **Simple Interface** – Control everything with Telegram buttons.
 
-## Как запустить
-1. Клонировать репозиторий.
-2. Открыть проект в Visual Studio.
-3. Установить все необходимые зависимости.
-   - Откройте Менеджер пакетов NuGet.
-   - Установите пакет Telegram.Bot.
-5. Создать токен для бота через [@BotFather](https://core.telegram.org/bots#botfather) в Telegram и указать его в конфигурационном файле `config.json`.
-6. Убедитесь, что в файле `config.json` указаны правильные значения для пути к папке с музыкой и списка разрешенных пользователей.
-7. Запустите проект и взаимодействуйте с ботом в Telegram.
+## 🛠️ Technologies Used
 
-### Пример файла `config.json`:
+- **C# / .NET** – Core logic and bot implementation.
+- **Telegram Bot API** – For creating and managing the bot.
+
+## 🚀 How to Run
+
+1. Clone the repository.
+2. Open the project in Visual Studio.
+3. Install dependencies:
+   - Open **NuGet Package Manager**.
+   - Install `Telegram.Bot`.
+4. Create a bot using [@BotFather](https://t.me/BotFather) and copy the token.
+5. Configure the `config.json` file with your bot token, music folder path, and allowed user IDs.
+6. Run the project and start chatting with your bot in Telegram.
+
+## 📁 Example `config.json`
+
 ```json
 {
-  "Token": "your-bot-token",  // Укажите токен вашего бота
-  "SoundFolderPath": "C:\\Music\\Folder",  // Укажите путь к вашей папке с музыкой
-  "AllowedUsers": [123456789, 987654321]   // Укажите ID пользователей, которым разрешен доступ
+  "Token": "your-bot-token",  
+  "SoundFolderPath": "C:\\Music\\Folder",  
+  "AllowedUsers": [123456789, 987654321]
 }
+
+
+
