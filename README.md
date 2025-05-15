@@ -1,4 +1,4 @@
-# AudioTgBot — A Simple Telegram Bot to Control Local Music Playback on Your PC
+# AudioTgBot — A Simple Audio Controller Bot for Telegram
 
 ## Description
 AudioTgBot is a Telegram bot for managing music playback. It allows the user to play music on a PC, switch tracks, and launch audio files from a folder.
